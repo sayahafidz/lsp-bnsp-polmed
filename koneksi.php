@@ -8,7 +8,7 @@ if (!$conn) {
     die("Koneksi gagal: " . mysqli_connect_error());
 }
 
-
+// proses tambah edit guru
 function addUpdateGuru($conn)
 {
     if (isset($_POST['Submit'])) {
@@ -46,7 +46,7 @@ function addUpdateGuru($conn)
     }
 }
 
-//proses edit data siswa
+//proses tambah edit data siswa
 function addUpdateSiswa($conn)
 {
     if (isset($_POST["Submit"])) {
@@ -77,6 +77,7 @@ function addUpdateSiswa($conn)
                 echo "<script type='text/javascript'>alert('Data siswa berhasil diupdate');</script>";
             }
         } else {
+            // $error = mysqli_error($conn);
             echo "<script type='text/javascript'>alert('Edit data siswa gagal.');</script>";
         }
     }

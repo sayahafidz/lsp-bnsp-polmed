@@ -61,8 +61,6 @@ require_once("koneksi.php");
 if (isset($_POST['login'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
-
-
     //cek apakah email dan password cocok dengan data di tabel user
     $query = "SELECT * FROM user WHERE email='$email' AND password='$password'";
     $result = mysqli_query($conn, $query);
@@ -71,10 +69,10 @@ if (isset($_POST['login'])) {
     $_SESSION['name'] = $hasil['nama'];
 
     if (mysqli_num_rows($result) == 1) {
-        //jika cocok, maka redirect ke halaman index
-        header("Location: index.php?page=siswa");
+        //jika cocok, maka redirect ke halaman siswa
+        header("Location: index.php");
     } else {
-        //jika tidak cocok, maka tampilkan pesan error
+        //jika tidak cocok, maka tampilkan pesan 
         echo "<script type='text/javascript'>alert('Email atau password salah!');</script>";
     }
 }
