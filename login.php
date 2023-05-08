@@ -60,15 +60,17 @@ if (isset($_POST['login'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    print_r($_POST);
 
     //cek apakah email dan password cocok dengan data di tabel user
     $query = "SELECT * FROM user WHERE email='$email' AND password='$password'";
     $result = mysqli_query($conn, $query);
+    $hasil = mysqli_fetch_assoc($result);
+    $_SESSION['loggedin'] = true;
+    $_SESSION['name'] = $hasil['nama'];
 
     if (mysqli_num_rows($result) == 1) {
         //jika cocok, maka redirect ke halaman index
-        header("Location: index.php");
+        header("Location: index.php?page=siswa");
     } else {
         //jika tidak cocok, maka tampilkan pesan error
         echo "<script type='text/javascript'>alert('Email atau password salah!');</script>";
