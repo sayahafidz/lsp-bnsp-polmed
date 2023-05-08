@@ -110,7 +110,7 @@ if (isset($_GET["id"])) {
                 </div>
 
                 <input type="submit" value="Submit" name="Submit" class="btn btn-primary">
-                <a href="index.php" class="btn btn-warning">Kembali</a>
+                <a href="index.php?page=siswa" class="btn btn-warning">Kembali</a>
             </form>
         </div>
     </div>
