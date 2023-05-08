@@ -77,8 +77,8 @@
                     <div class="col-sm-10">
                         <select class="form-select" name="jk">
                             <option selected>Pilih</option>
-                            <option value="Laki-laki">Laki-laki</option>
-                            <option value="Perempuan">Perempuan</option>
+                            <option value="Laki-laki" <?php echo  isset($data['jenis_kelamin']) == "Laki-laki" ? "selected" : '' ?>>Laki-laki</option>
+                            <option value="Perempuan" <?php echo  isset($data['jenis_kelamin']) == "Perempuan" ? "selected" : '' ?>>Perempuan</option>
                         </select>
                     </div>
                 </div>
@@ -111,8 +111,8 @@
                     <div class="col-sm-10">
                         <select class="form-select" name="status">
                             <option selected>Pilih</option>
-                            <option value="Aktif">Aktif</option>
-                            <option value="Tidak Aktif">Tidak Aktif</option>
+                            <option value="Aktif" <?php echo  isset($data['status']) == "Aktif" ? "selected" : '' ?>>Aktif</option>
+                            <option value="Tidak Aktif" <?php echo  isset($data['status']) == "Tidak Aktif" ? "selected" : '' ?>>Tidak Aktif</option>
                         </select>
                     </div>
                 </div>
