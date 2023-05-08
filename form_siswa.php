@@ -1,37 +1,7 @@
 <?php
 require_once("koneksi.php");
-//proses edit data siswa
-if (isset($_POST["Submit"])) {
-    $id = $_POST["id"];
-    $nama_siswa = $_POST["namasiswa"];
-    $nis = $_POST["nis"];
-    $kelas = $_POST["kelas"];
-    $jenis_kelamin = $_POST["jk"];
-    $tempat_tanggal_lahir = $_POST["ttl"];
-    $alamat = $_POST["alamat"];
-    $no_hp = $_POST["nohp"];
-    $status = $_POST["status"];
 
-    // Check if we need to add or edit a record
-    if (empty($id)) {
-        // Add new record
-        $sql = "INSERT INTO siswa (nama_siswa, nis, kelas, jenis_kelamin, tempat_tanggal_lahir, alamat, no_hp, status) VALUES ('$nama_siswa', '$nis', '$kelas', '$jenis_kelamin', '$tempat_tanggal_lahir', '$alamat', '$no_hp', '$status')";
-    } else {
-
-        $sql = "UPDATE siswa SET nama_siswa='$nama_siswa', nis='$nis', kelas='$kelas', jenis_kelamin='$jenis_kelamin', tempat_tanggal_lahir='$tempat_tanggal_lahir', alamat='$alamat', no_hp='$no_hp', status='$status' WHERE id=$id";
-    }
-
-    if (mysqli_query($conn, $sql)) {
-        if (empty($id)) {
-            echo "<script type='text/javascript'>alert('Data siswa berhasil ditambahkan');</script>";
-        } else {
-
-            echo "<script type='text/javascript'>alert('Data siswa berhasil diupdate');</script>";
-        }
-    } else {
-        echo "<script type='text/javascript'>alert('Edit data siswa gagal.');</script>";
-    }
-}
+addUpdateSiswa($conn);
 
 //proses ambil data siswa dari tabel
 if (isset($_GET["id"])) {
@@ -61,7 +31,7 @@ if (isset($_GET["id"])) {
                 <div class="mb-3 row">
                     <label class="col-sm-2 col-form-label">Nis</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="nis" value="<?php echo isset($data["nis"]) ? $data['nis'] : ''; ?>">
+                        <input type="number" class="form-control" name="nis" value="<?php echo isset($data["nis"]) ? $data['nis'] : ''; ?>">
                     </div>
                 </div>
                 <div class="mb-3 row">
@@ -95,7 +65,7 @@ if (isset($_GET["id"])) {
                 <div class="mb-3 row">
                     <label class="col-sm-2 col-form-label">No Hp</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="nohp" value="<?php echo isset($data["no_hp"]) ? $data['no_hp'] : ''; ?>">
+                        <input type="number" class="form-control" name="nohp" value="<?php echo isset($data["no_hp"]) ? $data['no_hp'] : ''; ?>">
                     </div>
                 </div>
                 <div class="mb-3 row">

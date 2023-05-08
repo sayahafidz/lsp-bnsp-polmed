@@ -10,6 +10,8 @@
     <title>Login</title>
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- menggunakan library css animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
 <body class="bg-primary">
@@ -17,7 +19,7 @@
         <div id="layoutAuthentication_content">
             <main>
                 <div class="container">
-                    <div class="row justify-content-center">
+                    <div class="row justify-content-center animate__animated  animate__bounce">
                         <div class="col-lg-5">
                             <div class="card shadow-lg border-0 rounded-lg mt-5">
                                 <div class="card-header">

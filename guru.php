@@ -4,7 +4,7 @@
         <li class="breadcrumb-item active">Data Guru</li>
     </ol>
     <a href="index.php?page=form_guru" class="btn btn-primary">Tambah Data</a>
-    <div class="card mb-4">
+    <div class="card mb-4 animate__animated  animate__bounce">
         <div class="card-header">
             <i class="fas fa-table me-1"></i>
             Data Guru
