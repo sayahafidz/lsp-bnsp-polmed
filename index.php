@@ -3,7 +3,6 @@ require_once("koneksi.php");
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) { // Check if user is logged in
     echo "<script type='text/javascript'>alert('Anda harus login terlebih dahulu!');</script>";
     echo "<script type='text/javascript'>window.location = 'login.php';</script>";
-    // header('Location: login.php'); // Redirect to login page if user is not logged in
     exit;
 }
 ?>
@@ -27,7 +26,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) { // Check 
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3 animate__animated animate__pulse animate__infinite" href="index.php?page=siswa">Dashboard Sekolah</a>
+        <a class="navbar-brand ps-3 animate__animated animate__pulse animate__infinite" href="index.php">Dashboard Sekolah</a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <!-- Navbar-->
@@ -38,6 +37,10 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) { // Check 
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Data</div>
+                        <a class="nav-link" href="index.php?page=dashboard">
+                            <div class="sb-nav-link-icon"><i class="fas fa-house"></i></div>
+                            Dashboard
+                        </a>
                         <a class="nav-link" href="index.php?page=siswa">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Data Siswa
@@ -46,7 +49,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) { // Check 
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                             Data Guru
                         </a>
-                        <a class="nav-link" href="logout.php">
+                        <a class="nav-link" href="logout.php" onclick="return confirm('yakin ingin logout   ?');">
                             <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
                             Logout
                         </a>
@@ -61,17 +64,21 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) { // Check 
         <div id="layoutSidenav_content">
             <main>
                 <?php
-                $page = $_GET['page'];
-                if ($page == 'siswa') {
-                    include('siswa.php');
-                } elseif ($page == 'guru') {
-                    include('guru.php');
-                } elseif ($page == 'form_guru') {
-                    include('form_guru.php');
-                } elseif ($page == 'form_siswa') {
-                    include('form_siswa.php');
+                if (isset($_GET['page'])) {
+                    $page = $_GET['page'];
+                    if ($page == 'siswa') {
+                        include('siswa.php');
+                    } elseif ($page == 'guru') {
+                        include('guru.php');
+                    } elseif ($page == 'form_guru') {
+                        include('form_guru.php');
+                    } elseif ($page == 'form_siswa') {
+                        include('form_siswa.php');
+                    } else {
+                        include('dashboard.php');
+                    }
                 } else {
-                    include('siswa.php');
+                    include('dashboard.php');
                 }
                 ?>
             </main>
